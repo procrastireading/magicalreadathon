@@ -1,11 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reading Challenge</title>
 </head>
 
 <body>
-    <h1>Hello!</h1>
-    <p>Welcome to my website.</p>
+
+    <h1>Welcome to Orillium</h1>
+
+    <h2>Enroll</h2>
+
+    <input
+        type="email"
+        id="signup-email"
+        placeholder="Email"
+    >
+
+    <input
+        type="password"
+        id="signup-password"
+        placeholder="Password"
+    >
+
+    <button id="signup-button">Create account</button>
+
+    <h2>Log in</h2>
+
+    <input
+        type="email"
+        id="login-email"
+        placeholder="Email"
+    >
+
+    <input
+        type="password"
+        id="login-password"
+        placeholder="Password"
+    >
+
+    <button id="login-button">Log in</button>
+
+    <p id="message"></p>
+
+    <div id="logged-in" style="display: none;">
+        <h2>You're logged in!</h2>
+        <p id="user-email"></p>
+        <button id="logout-button">Log out</button>
+    </div>
+
+    <script type="module">
+
+        import { createClient } from
+            'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+        // We'll put your Supabase details here next.
+
+        const SUPABASE_URL = 'https://jgmoullogygoggqrswjk.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_gP6cLHzmxDq8kDxREa0WZA_u40Zji1F';
+
+        const supabase = createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+        const message = document.getElementById('message');
+
+        // Sign up
+        document.getElementById('signup-button').addEventListener('click', async () => {
+
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+
+            const { data, error } = await supabase.auth.signUp({
+                email: email,
+                password: password
+            });
+
+            if (error) {
+                message.textContent = error.message;
+                return;
+            }
+
+            message.textContent =
+                'Account created! Check your email if confirmation is required.';
+        });
+
+
+        // Log in
+        document.getElementById('login-button').addEventListener('click', async () => {
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            if (error) {
+                message.textContent = error.message;
+                return;
+            }
+
+            showLoggedInUser(data.user);
+        });
+
+
+        // Log out
+        document.getElementById('logout-button').addEventListener('click', async () => {
+
+            await supabase.auth.signOut();
+
+            document.getElementById('logged-in').style.display = 'none';
+            message.textContent = 'You have logged out.';
+        });
+
+
+        // Check whether someone is already logged in
+        const { data } = await supabase.auth.getUser();
+
+        if (data.user) {
+            showLoggedInUser(data.user);
+        }
+
+
+        function showLoggedInUser(user) {
+
+            document.getElementById('logged-in').style.display = 'block';
+
+            document.getElementById('user-email').textContent =
+                'Logged in as: ' + user.email;
+        }
+
+    </script>
+
 </body>
 </html>
