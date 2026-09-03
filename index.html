@@ -2,90 +2,280 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Magical Readathon</title>
 
+
     <style>
 
-        body {
-            font-family: Georgia, serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 30px;
-        }
-
-        h1, h2 {
-            text-align: center;
-        }
-
-        .section {
-            margin-bottom: 30px;
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 5px;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 8px;
+        * {
             box-sizing: border-box;
         }
 
+
+        body {
+
+            font-family: Georgia, serif;
+
+            max-width: 900px;
+
+            margin: 0 auto;
+
+            padding: 30px;
+
+            color: #2d2638;
+
+            background: #f8f5fb;
+
+        }
+
+
         button {
-            margin-top: 20px;
-            padding: 10px 20px;
+
+            padding: 10px 18px;
+
+            border: none;
+
+            border-radius: 5px;
+
+            background: #5d477a;
+
+            color: white;
+
             cursor: pointer;
+
+            font-family: inherit;
+
         }
 
-        .checkbox-option {
-            margin-top: 10px;
+
+        button:hover {
+
+            background: #46355d;
+
         }
 
-        .checkbox-option label {
-            display: inline;
-            margin-left: 5px;
+
+        input,
+        select {
+
+            width: 100%;
+
+            padding: 10px;
+
+            margin-bottom: 10px;
+
+            border: 1px solid #bbb;
+
+            border-radius: 4px;
+
         }
+
+
+        label {
+
+            display: block;
+
+            margin-top: 15px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        h1,
+        h2 {
+
+            text-align: center;
+
+        }
+
 
         .hidden {
-            display: none;
+
+            display: none !important;
+
         }
+
+
+        .page {
+
+            min-height: 80vh;
+
+        }
+
+
+        .top-bar {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 30px;
+
+            padding-bottom: 15px;
+
+            border-bottom: 1px solid #ddd;
+
+        }
+
+
+        .top-bar h1 {
+
+            margin: 0;
+
+            text-align: left;
+
+        }
+
+
+        .checkbox-row {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .checkbox-row input {
+
+            width: auto;
+
+            margin: 0;
+
+        }
+
+
+        .checkbox-row label {
+
+            margin: 0;
+
+        }
+
+
+        .calling-option {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 8px;
+
+        }
+
+
+        .calling-option input {
+
+            width: auto;
+
+            margin: 0;
+
+        }
+
+
+        .calling-option label {
+
+            margin: 0;
+
+        }
+
 
         .character-card {
-            border: 1px solid #ccc;
-            padding: 20px;
-            margin-top: 20px;
+
+            background: white;
+
+            border: 1px solid #ddd;
+
+            border-radius: 8px;
+
+            padding: 25px;
+
+            text-align: center;
+
         }
 
-        .character-card h3 {
+
+        .character-card h2 {
+
             margin-top: 0;
+
         }
 
-        #message {
-            margin-top: 20px;
-            font-weight: bold;
+
+        .character-details {
+
+            line-height: 1.8;
+
         }
+
+
+        .message {
+
+            margin: 20px 0;
+
+            padding: 12px;
+
+            border-radius: 5px;
+
+            background: #eee8f5;
+
+        }
+
+
+        .error {
+
+            background: #f5dede;
+
+            color: #7a2222;
+
+        }
+
+
+        .success {
+
+            background: #dff1e3;
+
+            color: #245c30;
+
+        }
+
 
     </style>
+
 </head>
 
 
 <body>
 
-    <!-- ========================= -->
-    <!-- LOGIN / SIGNUP             -->
-    <!-- ========================= -->
 
-    <div id="auth-section">
+    // AUTHENTICATION PAGE
+
+    <div
+        id="auth-page"
+        class="page"
+    >
 
         <h1>Welcome to Orillium</h1>
 
+
         <h2>Enroll</h2>
+
 
         <input
             type="email"
@@ -93,18 +283,23 @@
             placeholder="Email"
         >
 
+
         <input
             type="password"
             id="signup-password"
             placeholder="Password"
         >
 
+
         <button id="signup-button">
             Create account
         </button>
 
 
-        <h2>Log in</h2>
+        <h2>
+            Already have an account?
+        </h2>
+
 
         <input
             type="email"
@@ -112,419 +307,477 @@
             placeholder="Email"
         >
 
+
         <input
             type="password"
             id="login-password"
             placeholder="Password"
         >
 
+
         <button id="login-button">
             Log in
         </button>
 
+
     </div>
 
 
-    <!-- ========================= -->
-    <!-- LOGGED IN AREA              -->
-    <!-- ========================= -->
+    // SCHOLAR'S KEY PAGE
 
-    <div id="app-section" class="hidden">
+    <div
+        id="scholar-page"
+        class="page hidden"
+    >
 
-        <h1>Magical Readathon</h1>
+        <div class="top-bar">
 
-        <p id="user-email"></p>
+            <h1>Scholar's Key</h1>
 
-        <button id="logout-button">
-            Log out
-        </button>
+            <button id="scholar-logout-button">
+                Log out
+            </button>
+
+        </div>
 
 
-        <!-- ========================= -->
-        <!-- SCHOLAR'S KEY               -->
-        <!-- ========================= -->
+        <form id="character-form">
 
-        <div class="section">
 
-            <h2>Scholar's Key</h2>
+            <!-- FULL NAME -->
 
-            <form id="character-form">
+            <label for="full-name">
+                Full name *
+            </label>
 
-                <!-- Full name -->
+            <input
+                type="text"
+                id="full-name"
+                required
+            >
 
-                <label for="full-name">
-                    Full name *
-                </label>
+
+
+            <!-- AGE -->
+
+            <label for="age">
+                Age
+            </label>
+
+            <input
+                type="number"
+                id="age"
+                min="0"
+            >
+
+
+
+            <!-- GENDER -->
+
+            <label for="gender">
+                Gender
+            </label>
+
+            <select id="gender">
+
+                <option value="">
+                    -- Select --
+                </option>
+
+                <option value="male">
+                    Male
+                </option>
+
+                <option value="female">
+                    Female
+                </option>
+
+                <option value="non binary">
+                    Non binary
+                </option>
+
+                <option value="other/prefer not to say">
+                    Other / Prefer not to say
+                </option>
+
+            </select>
+
+
+
+            <!-- IMAGE -->
+
+            <label for="character-image">
+                Character image
+            </label>
+
+            <input
+                type="file"
+                id="character-image"
+                accept="image/*"
+            >
+
+
+
+            <!-- LUNAR PHASE -->
+
+            <label for="lunar-phase">
+                Lunar phase at birth
+            </label>
+
+            <select id="lunar-phase">
+
+                <option value="">
+                    -- Select --
+                </option>
+
+                <option value="unnoted">
+                    Unnoted
+                </option>
+
+                <option value="eclipse">
+                    Eclipse
+                </option>
+
+                <option value="blood moon">
+                    Blood Moon
+                </option>
+
+                <option value="alignment">
+                    Alignment
+                </option>
+
+            </select>
+
+
+
+            <!-- NOVICE PATH -->
+
+            <div class="checkbox-row">
 
                 <input
-                    type="text"
-                    id="full-name"
-                    required
+                    type="checkbox"
+                    id="novice-path"
                 >
 
-
-                <!-- Age -->
-
-                <label for="age">
-                    Age
+                <label for="novice-path">
+                    Do you want to walk the Novice Path?
                 </label>
 
-                <input
-                    type="number"
-                    id="age"
-                    min="0"
-                >
+            </div>
 
 
-                <!-- Gender -->
 
-                <label for="gender">
-                    Gender
+            <!-- NON-NOVICE INFORMATION -->
+
+            <div id="advanced-character-info">
+
+
+                <h3>
+                    Scholar Information
+                </h3>
+
+
+
+                <!-- BACKGROUND -->
+
+                <label for="background">
+                    Background *
                 </label>
 
-                <select id="gender">
+                <select id="background">
 
                     <option value="">
                         -- Select --
                     </option>
 
-                    <option value="male">
-                        Male
+                    <option value="Urban">
+                        Urban
                     </option>
 
-                    <option value="female">
-                        Female
-                    </option>
-
-                    <option value="non binary">
-                        Non binary
-                    </option>
-
-                    <option value="other/prefer not to say">
-                        Other / Prefer not to say
+                    <option value="Wilding">
+                        Wilding
                     </option>
 
                 </select>
 
 
-                <!-- Image -->
 
-                <label for="character-image">
-                    Character image
+                <!-- PROVINCE -->
+
+                <label for="province">
+                    Province *
                 </label>
 
-                <input
-                    type="file"
-                    id="character-image"
-                    accept="image/*"
-                >
-
-
-                <!-- Lunar phase -->
-
-                <label for="lunar-phase">
-                    Lunar phase at birth
-                </label>
-
-                <select id="lunar-phase">
+                <select id="province">
 
                     <option value="">
                         -- Select --
                     </option>
 
-                    <option value="unnoted">
-                        Unnoted
+                    <option value="Daerune">
+                        Daerune
                     </option>
 
-                    <option value="eclipse">
-                        Eclipse
+                    <option value="Darkmeadow">
+                        Darkmeadow
                     </option>
 
-                    <option value="blood moon">
-                        Blood Moon
+                    <option value="Irtheria">
+                        Irtheria
                     </option>
 
-                    <option value="alignment">
-                        Alignment
+                    <option value="Kerador">
+                        Kerador
                     </option>
 
                 </select>
 
 
-                <!-- Novice Path -->
 
-                <div class="checkbox-option">
+                <!-- GUILD -->
+
+                <label for="guild">
+                    Guild *
+                </label>
+
+                <select id="guild">
+
+                    <option value="">
+                        -- Select --
+                    </option>
+
+                    <option value="The House of the Arcane">
+                        The House of the Arcane
+                    </option>
+
+                    <option value="The Order of the Crescent">
+                        The Order of the Crescent
+                    </option>
+
+                    <option value="The Mind Walkers">
+                        The Mind Walkers
+                    </option>
+
+                    <option value="The Archivists">
+                        The Archivists
+                    </option>
+
+                </select>
+
+
+
+                <!-- CALLING -->
+
+                <label>
+                    Calling *
+                </label>
+
+
+                <div class="calling-option">
 
                     <input
                         type="checkbox"
-                        id="novice-path"
+                        name="calling"
+                        value="option a"
+                        id="calling-a"
                     >
 
-                    <label for="novice-path">
-                        Do you want to walk the Novice Path?
+                    <label for="calling-a">
+                        Option A
                     </label>
 
                 </div>
 
 
-                <!-- ========================= -->
-                <!-- NON-NOVICE INFORMATION      -->
-                <!-- ========================= -->
+                <div class="calling-option">
 
-                <div id="advanced-character-info">
+                    <input
+                        type="checkbox"
+                        name="calling"
+                        value="option b"
+                        id="calling-b"
+                    >
 
-                    <h3>Scholar Information</h3>
-
-
-                    <!-- Background -->
-
-                    <label for="background">
-                        Background *
+                    <label for="calling-b">
+                        Option B
                     </label>
 
-                    <select id="background">
+                </div>
+
+
+                <div class="calling-option">
+
+                    <input
+                        type="checkbox"
+                        name="calling"
+                        value="option c"
+                        id="calling-c"
+                    >
+
+                    <label for="calling-c">
+                        Option C
+                    </label>
+
+                </div>
+
+
+
+                <!-- HERITAGE -->
+
+                <label for="heritage">
+                    Heritage *
+                </label>
+
+                <select id="heritage">
+
+                    <option value="">
+                        -- Select --
+                    </option>
+
+                    <option value="human">
+                        Human
+                    </option>
+
+                    <option value="elf">
+                        Elf
+                    </option>
+
+                    <option value="dwarf">
+                        Dwarf
+                    </option>
+
+                    <option value="iltirian">
+                        Iltirian
+                    </option>
+
+                    <option value="skaimorn">
+                        Skaimorn
+                    </option>
+
+                    <option value="earthling">
+                        Earthling
+                    </option>
+
+                </select>
+
+
+
+                <!-- EARTHLING SUBTYPE -->
+
+                <div
+                    id="earthling-subtype-section"
+                    class="hidden"
+                >
+
+                    <label for="heritage-subtype">
+                        Earthling type *
+                    </label>
+
+                    <select id="heritage-subtype">
 
                         <option value="">
                             -- Select --
                         </option>
 
-                        <option value="Urban">
-                            Urban
-                        </option>
-
-                        <option value="Wilding">
-                            Wilding
-                        </option>
-
-                    </select>
-
-
-                    <!-- Province -->
-
-                    <label for="province">
-                        Province *
-                    </label>
-
-                    <select id="province">
-
-                        <option value="">
-                            -- Select --
-                        </option>
-
-                        <option value="Daerune">
-                            Daerune
-                        </option>
-
-                        <option value="Darkmeadow">
-                            Darkmeadow
-                        </option>
-
-                        <option value="Irtheria">
-                            Irtheria
-                        </option>
-
-                        <option value="Kerador">
-                            Kerador
-                        </option>
-
-                    </select>
-
-
-                    <!-- Guild -->
-
-                    <label for="guild">
-                        Guild *
-                    </label>
-
-                    <select id="guild">
-
-                        <option value="">
-                            -- Select --
-                        </option>
-
-                        <option value="The House of the Arcane">
-                            The House of the Arcane
-                        </option>
-
-                        <option value="The Order of the Crescent">
-                            The Order of the Crescent
-                        </option>
-
-                        <option value="The Mind Walkers">
-                            The Mind Walkers
-                        </option>
-
-                        <option value="The Archivists">
-                            The Archivists
-                        </option>
-
-                    </select>
-
-
-                    <!-- Calling -->
-
-                    <label>
-                        Calling *
-                    </label>
-
-                    <div class="checkbox-option">
-
-                        <input
-                            type="checkbox"
-                            name="calling"
-                            value="option a"
-                            id="calling-a"
-                        >
-
-                        <label for="calling-a">
+                        <option value="option a">
                             Option A
-                        </label>
+                        </option>
 
-                    </div>
-
-
-                    <div class="checkbox-option">
-
-                        <input
-                            type="checkbox"
-                            name="calling"
-                            value="option b"
-                            id="calling-b"
-                        >
-
-                        <label for="calling-b">
+                        <option value="option b">
                             Option B
-                        </label>
-
-                    </div>
-
-
-                    <div class="checkbox-option">
-
-                        <input
-                            type="checkbox"
-                            name="calling"
-                            value="option c"
-                            id="calling-c"
-                        >
-
-                        <label for="calling-c">
-                            Option C
-                        </label>
-
-                    </div>
-
-
-                    <!-- Heritage -->
-
-                    <label for="heritage">
-                        Heritage *
-                    </label>
-
-                    <select id="heritage">
-
-                        <option value="">
-                            -- Select --
-                        </option>
-
-                        <option value="human">
-                            Human
-                        </option>
-
-                        <option value="elf">
-                            Elf
-                        </option>
-
-                        <option value="dwarf">
-                            Dwarf
-                        </option>
-
-                        <option value="iltirian">
-                            Iltirian
-                        </option>
-
-                        <option value="skaimorn">
-                            Skaimorn
-                        </option>
-
-                        <option value="earthling">
-                            Earthling
                         </option>
 
                     </select>
 
-
-                    <!-- Earthling subtype -->
-
-                    <div id="earthling-subtype-section" class="hidden">
-
-                        <label for="heritage-subtype">
-                            Earthling type *
-                        </label>
-
-                        <select id="heritage-subtype">
-
-                            <option value="">
-                                -- Select --
-                            </option>
-
-                            <option value="option a">
-                                Option A
-                            </option>
-
-                            <option value="option b">
-                                Option B
-                            </option>
-
-                        </select>
-
-                    </div>
-
                 </div>
 
 
-                <button type="submit">
-                    Create Character
-                </button>
-
-            </form>
-
-        </div>
+            </div>
 
 
-        <!-- ========================= -->
-        <!-- EXISTING CHARACTERS        -->
-        <!-- ========================= -->
 
-        <div class="section">
+            <button type="submit">
+                Create Character
+            </button>
 
-            <h2>Your Characters</h2>
 
-            <div id="characters-list"></div>
-
-        </div>
+        </form>
 
     </div>
 
 
-    <p id="message"></p>
+    // CHARACTER HOME PAGE
+
+    <div
+        id="character-home-page"
+        class="page hidden"
+    >
+
+        <div class="top-bar">
+
+            <h1>
+                Magical Readathon
+            </h1>
 
 
-    <!-- ========================= -->
-    <!-- SUPABASE                   -->
-    <!-- ========================= -->
+            <div>
 
+                <button id="new-character-button">
+                    + New Character
+                </button>
+
+
+                <button id="home-logout-button">
+                    Log out
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <div
+            id="character-home-content"
+            class="character-card"
+        >
+
+            <!-- Filled by JavaScript -->
+
+        </div>
+
+
+    </div>
+
+
+    // MESSAGE
+
+    <div
+        id="message"
+        class="message hidden"
+    ></div>
+
+
+    // SUPABASE
+    
     <script type="module">
 
-        import { createClient } from
-            'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
+        import {
+            createClient
+        } from
+        'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+
+        // YOUR SUPABASE DETAILS
 
         const SUPABASE_URL =
             'https://jgmoullogygoggqrswjk.supabase.co';
 
+
         const SUPABASE_KEY =
             'sb_publishable_gP6cLHzmxDq8kDxREa0WZA_u40Zji1F';
+
 
 
         const supabase =
@@ -534,368 +787,760 @@
             );
 
 
+        // PAGE ELEMENTS
+
+        const authPage =
+            document.getElementById(
+                'auth-page'
+            );
+
+
+        const scholarPage =
+            document.getElementById(
+                'scholar-page'
+            );
+
+
+        const characterHomePage =
+            document.getElementById(
+                'character-home-page'
+            );
+
+
         const message =
-            document.getElementById('message');
-
-
-        const authSection =
-            document.getElementById('auth-section');
-
-
-        const appSection =
-            document.getElementById('app-section');
+            document.getElementById(
+                'message'
+            );
 
 
         const novicePath =
-            document.getElementById('novice-path');
+            document.getElementById(
+                'novice-path'
+            );
 
 
         const advancedInfo =
-            document.getElementById('advanced-character-info');
+            document.getElementById(
+                'advanced-character-info'
+            );
 
 
         const heritage =
-            document.getElementById('heritage');
+            document.getElementById(
+                'heritage'
+            );
 
 
         const earthlingSection =
-            document.getElementById('earthling-subtype-section');
+            document.getElementById(
+                'earthling-subtype-section'
+            );
 
 
-        // =================================
-        // NOVICE PATH TOGGLE
-        // =================================
+        // PAGE NAVIGATION
 
-        novicePath.addEventListener('change', () => {
+        function hideAllPages() {
 
-            if (novicePath.checked) {
+            authPage.classList.add('hidden');
 
-                advancedInfo.classList.add('hidden');
+            scholarPage.classList.add('hidden');
 
-            } else {
+            characterHomePage.classList.add('hidden');
 
-                advancedInfo.classList.remove('hidden');
-
-            }
-
-        });
+        }
 
 
-        // =================================
-        // HERITAGE TOGGLE
-        // =================================
 
-        heritage.addEventListener('change', () => {
+        function showAuthPage() {
 
-            if (heritage.value === 'earthling') {
+            hideAllPages();
 
-                earthlingSection.classList.remove('hidden');
+            authPage.classList.remove('hidden');
 
-            } else {
+        }
 
-                earthlingSection.classList.add('hidden');
 
+
+        function showScholarPage() {
+
+            hideAllPages();
+
+            scholarPage.classList.remove('hidden');
+
+            resetScholarForm();
+
+        }
+
+
+
+        function showCharacterHome(character) {
+
+            hideAllPages();
+
+            characterHomePage.classList.remove(
+                'hidden'
+            );
+
+
+            const content =
                 document.getElementById(
-                    'heritage-subtype'
-                ).value = '';
+                    'character-home-content'
+                );
+
+
+            content.innerHTML = '';
+
+
+            const title =
+                document.createElement(
+                    'h2'
+                );
+
+
+            title.textContent =
+                character.full_name;
+
+
+            content.appendChild(title);
+
+
+
+            const text =
+                document.createElement(
+                    'p'
+                );
+
+
+            text.className =
+                'character-details';
+
+
+            if (character.novice_path) {
+
+                text.textContent =
+                    'Novice Path character — challenge homepage coming soon.';
+
+            } else {
+
+                text.textContent =
+                    `${character.background} • ${character.province} • ${character.guild}`;
 
             }
 
-        });
+
+            content.appendChild(text);
 
 
-        // =================================
+
+            const note =
+                document.createElement(
+                    'p'
+                );
+
+
+            note.textContent =
+                'This is your character homepage. The reading challenge will be added here later.';
+
+
+            content.appendChild(note);
+
+        }
+
+
+        // MESSAGE
+
+        function showMessage(
+            text,
+            type = ''
+        ) {
+
+            message.textContent =
+                text;
+
+
+            message.className =
+                'message';
+
+
+            if (type) {
+
+                message.classList.add(
+                    type
+                );
+
+            }
+
+
+            message.classList.remove(
+                'hidden'
+            );
+
+        }
+
+
+
+        function clearMessage() {
+
+            message.classList.add(
+                'hidden'
+            );
+
+        }
+
+
+        // NOVICE PATH
+
+        novicePath.addEventListener(
+            'change',
+            () => {
+
+                if (
+                    novicePath.checked
+                ) {
+
+                    advancedInfo
+                        .classList
+                        .add('hidden');
+
+                } else {
+
+                    advancedInfo
+                        .classList
+                        .remove('hidden');
+
+                }
+
+            }
+        );
+
+
+        // HERITAGE
+
+        heritage.addEventListener(
+            'change',
+            () => {
+
+                if (
+                    heritage.value ===
+                    'earthling'
+                ) {
+
+                    earthlingSection
+                        .classList
+                        .remove('hidden');
+
+                } else {
+
+                    earthlingSection
+                        .classList
+                        .add('hidden');
+
+
+                    document
+                        .getElementById(
+                            'heritage-subtype'
+                        )
+                        .value = '';
+
+                }
+
+            }
+        );
+
+
         // SIGN UP
-        // =================================
 
         document
-            .getElementById('signup-button')
-            .addEventListener('click', async () => {
-
-                const email =
-                    document.getElementById(
-                        'signup-email'
-                    ).value;
-
-                const password =
-                    document.getElementById(
-                        'signup-password'
-                    ).value;
+            .getElementById(
+                'signup-button'
+            )
+            .addEventListener(
+                'click',
+                async () => {
 
 
-                const { error } =
-                    await supabase.auth.signUp({
+                    const email =
+                        document.getElementById(
+                            'signup-email'
+                        ).value.trim();
 
-                        email: email,
 
-                        password: password,
+                    const password =
+                        document.getElementById(
+                            'signup-password'
+                        ).value;
 
-                        options: {
 
-                            emailRedirectTo:
-                                'https://procrastireading.github.io/magicalreadathon/'
+
+                    const {
+                        error
+                    } =
+                        await supabase.auth.signUp({
+
+                            email,
+
+                            password,
+
+                            options: {
+
+                                emailRedirectTo:
+                                    'https://procrastireading.github.io/magicalreadathon/'
+
+                            }
+
+                        });
+
+
+
+                    if (error) {
+
+                        showMessage(
+                            error.message,
+                            'error'
+                        );
+
+                        return;
+
+                    }
+
+
+
+                    showMessage(
+                        'Account created! Check your email to confirm your account.',
+                        'success'
+                    );
+
+                }
+            );
+
+
+        // LOGIN
+
+        document
+            .getElementById(
+                'login-button'
+            )
+            .addEventListener(
+                'click',
+                async () => {
+
+
+                    clearMessage();
+
+
+                    const email =
+                        document.getElementById(
+                            'login-email'
+                        ).value.trim();
+
+
+                    const password =
+                        document.getElementById(
+                            'login-password'
+                        ).value;
+
+
+
+                    const {
+                        data,
+                        error
+                    } =
+                        await supabase.auth
+                            .signInWithPassword({
+
+                                email,
+
+                                password
+
+                            });
+
+
+
+                    if (error) {
+
+                        showMessage(
+                            error.message,
+                            'error'
+                        );
+
+                        return;
+
+                    }
+
+
+
+                    await routeUser(
+                        data.user
+                    );
+
+                }
+            );
+
+
+        // LOG OUT
+
+        async function logout() {
+
+            await supabase.auth.signOut();
+
+            showAuthPage();
+
+        }
+
+
+
+        document
+            .getElementById(
+                'scholar-logout-button'
+            )
+            .addEventListener(
+                'click',
+                logout
+            );
+
+
+        document
+            .getElementById(
+                'home-logout-button'
+            )
+            .addEventListener(
+                'click',
+                logout
+            );
+
+
+        // NEW CHARACTER
+        
+        document
+            .getElementById(
+                'new-character-button'
+            )
+            .addEventListener(
+                'click',
+                () => {
+
+                    clearMessage();
+
+                    showScholarPage();
+
+                }
+            );
+
+
+        // CREATE CHARACTER
+
+        document
+            .getElementById(
+                'character-form'
+            )
+            .addEventListener(
+                'submit',
+                async event => {
+
+
+                    event.preventDefault();
+
+                    clearMessage();
+
+
+
+                    const {
+                        data: {
+                            user
+                        }
+                    } =
+                        await supabase.auth
+                            .getUser();
+
+
+
+                    if (!user) {
+
+                        showAuthPage();
+
+                        return;
+
+                    }
+
+
+
+                    const isNovice =
+                        novicePath.checked;
+
+
+
+                    // -------------------------
+                    // Validate non-Novice fields
+                    // -------------------------
+
+                    if (!isNovice) {
+
+
+                        const background =
+                            document.getElementById(
+                                'background'
+                            ).value;
+
+
+                        const province =
+                            document.getElementById(
+                                'province'
+                            ).value;
+
+
+                        const guild =
+                            document.getElementById(
+                                'guild'
+                            ).value;
+
+
+                        const heritageValue =
+                            heritage.value;
+
+
+                        const selectedCallings =
+                            Array.from(
+                                document.querySelectorAll(
+                                    'input[name="calling"]:checked'
+                                )
+                            );
+
+
+
+                        if (
+                            !background ||
+                            !province ||
+                            !guild ||
+                            !heritageValue ||
+                            selectedCallings.length === 0
+                        ) {
+
+                            showMessage(
+                                'Please complete all required Scholar Information fields.',
+                                'error'
+                            );
+
+                            return;
 
                         }
 
-                    });
 
 
-                if (error) {
+                        if (
+                            heritageValue ===
+                            'earthling'
+                        ) {
 
-                    message.textContent =
-                        error.message;
-
-                    return;
-
-                }
-
-
-                message.textContent =
-                    'Account created! Check your email if confirmation is required.';
-
-            });
+                            const subtype =
+                                document.getElementById(
+                                    'heritage-subtype'
+                                ).value;
 
 
-        // =================================
-        // LOG IN
-        // =================================
+                            if (!subtype) {
 
-        document
-            .getElementById('login-button')
-            .addEventListener('click', async () => {
+                                showMessage(
+                                    'Please select an Earthling type.',
+                                    'error'
+                                );
 
-                const email =
-                    document.getElementById(
-                        'login-email'
-                    ).value;
+                                return;
 
-                const password =
-                    document.getElementById(
-                        'login-password'
-                    ).value;
+                            }
 
+                        }
 
-                const { data, error } =
-                    await supabase.auth.signInWithPassword({
-
-                        email: email,
-
-                        password: password
-
-                    });
-
-
-                if (error) {
-
-                    message.textContent =
-                        error.message;
-
-                    return;
-
-                }
-
-
-                showLoggedInUser(data.user);
-
-            });
-
-
-        // =================================
-        // LOG OUT
-        // =================================
-
-        document
-            .getElementById('logout-button')
-            .addEventListener('click', async () => {
-
-                await supabase.auth.signOut();
-
-                showLoggedOut();
-
-            });
-
-
-        // =================================
-        // CREATE CHARACTER
-        // =================================
-
-        document
-            .getElementById('character-form')
-            .addEventListener('submit', async (event) => {
-
-                event.preventDefault();
-
-
-                const {
-                    data: {
-                        user
                     }
-                } =
-                    await supabase.auth.getUser();
 
 
-                if (!user) {
+                    // Calling values
 
-                    message.textContent =
-                        'You must be logged in.';
+                    const selectedCallings =
+                        Array.from(
+                            document.querySelectorAll(
+                                'input[name="calling"]:checked'
+                            )
+                        ).map(
+                            checkbox =>
+                                checkbox.value
+                        );
 
-                    return;
 
-                }
+                    // Character object
+
+                    const character = {
+
+                        user_id:
+                            user.id,
 
 
-                const isNovice =
-                    novicePath.checked;
+                        full_name:
+                            document.getElementById(
+                                'full-name'
+                            ).value.trim(),
 
 
-                const selectedCallings =
-                    Array.from(
-                        document.querySelectorAll(
-                            'input[name="calling"]:checked'
-                        )
-                    ).map(
-                        checkbox => checkbox.value
+                        age:
+                            document.getElementById(
+                                'age'
+                            ).value
+                                ? Number(
+                                    document.getElementById(
+                                        'age'
+                                    ).value
+                                )
+                                : null,
+
+
+                        gender:
+                            document.getElementById(
+                                'gender'
+                            ).value ||
+                            null,
+
+
+                        image_url:
+                            null,
+
+
+                        lunar_phase:
+                            document.getElementById(
+                                'lunar-phase'
+                            ).value ||
+                            null,
+
+
+                        novice_path:
+                            isNovice,
+
+
+                        background:
+                            isNovice
+                                ? null
+                                : document.getElementById(
+                                    'background'
+                                ).value,
+
+
+                        province:
+                            isNovice
+                                ? null
+                                : document.getElementById(
+                                    'province'
+                                ).value,
+
+
+                        guild:
+                            isNovice
+                                ? null
+                                : document.getElementById(
+                                    'guild'
+                                ).value,
+
+
+                        calling:
+                            isNovice
+                                ? null
+                                : selectedCallings.join(
+                                    ', '
+                                ),
+
+
+                        heritage:
+                            isNovice
+                                ? null
+                                : heritage.value,
+
+
+                        heritage_subtype:
+                            isNovice ||
+                            heritage.value !==
+                                'earthling'
+                                ? null
+                                : document.getElementById(
+                                    'heritage-subtype'
+                                ).value
+
+                    };
+
+
+                    // Save character
+
+                    const {
+                        data,
+                        error
+                    } =
+                        await supabase
+                            .from(
+                                'characters'
+                            )
+                            .insert(
+                                character
+                            )
+                            .select()
+                            .single();
+
+
+
+                    if (error) {
+
+                        console.error(
+                            error
+                        );
+
+
+                        showMessage(
+                            'Could not create character: ' +
+                            error.message,
+                            'error'
+                        );
+
+                        return;
+
+                    }
+
+
+                    // Success
+
+                    showCharacterHome(
+                        data
                     );
 
-
-                const character = {
-
-                    user_id: user.id,
-
-                    full_name:
-                        document.getElementById(
-                            'full-name'
-                        ).value,
-
-                    age:
-                        document.getElementById(
-                            'age'
-                        ).value
-                            ? Number(
-                                document.getElementById(
-                                    'age'
-                                ).value
-                            )
-                            : null,
-
-                    gender:
-                        document.getElementById(
-                            'gender'
-                        ).value || null,
-
-                    image_url:
-                        null,
-
-                    lunar_phase:
-                        document.getElementById(
-                            'lunar-phase'
-                        ).value || null,
-
-                    novice_path:
-                        isNovice,
-
-                    background:
-                        isNovice
-                            ? null
-                            : document.getElementById(
-                                'background'
-                            ).value,
-
-                    province:
-                        isNovice
-                            ? null
-                            : document.getElementById(
-                                'province'
-                            ).value,
-
-                    guild:
-                        isNovice
-                            ? null
-                            : document.getElementById(
-                                'guild'
-                            ).value,
-
-                    calling:
-                        isNovice
-                            ? null
-                            : selectedCallings.join(', '),
-
-                    heritage:
-                        isNovice
-                            ? null
-                            : document.getElementById(
-                                'heritage'
-                            ).value,
-
-                    heritage_subtype:
-                        isNovice ||
-                        heritage.value !== 'earthling'
-                            ? null
-                            : document.getElementById(
-                                'heritage-subtype'
-                            ).value
-
-                };
-
-
-                const { error } =
-                    await supabase
-                        .from('characters')
-                        .insert(character);
-
-
-                if (error) {
-
-                    message.textContent =
-                        error.message;
-
-                    console.error(error);
-
-                    return;
-
                 }
+            );
 
 
-                message.textContent =
-                    'Character created!';
-
-
-                document
-                    .getElementById('character-form')
-                    .reset();
-
-
-                earthlingSection
-                    .classList.add('hidden');
-
-
-                await loadCharacters();
-
-            });
-
-
-        // =================================
-        // LOAD CHARACTERS
-        // =================================
+        // LOAD USER'S CHARACTERS
 
         async function loadCharacters() {
+
 
             const {
                 data: {
                     user
                 }
             } =
-                await supabase.auth.getUser();
+                await supabase.auth
+                    .getUser();
+
 
 
             if (!user) {
-                return;
+
+                return [];
+
             }
 
 
-            const { data, error } =
+
+            const {
+                data,
+                error
+            } =
                 await supabase
-                    .from('characters')
+                    .from(
+                        'characters'
+                    )
                     .select('*')
                     .order(
                         'created_at',
@@ -905,139 +1550,105 @@
                     );
 
 
+
             if (error) {
 
-                message.textContent =
-                    error.message;
-
-                console.error(error);
-
-                return;
-
-            }
-
-
-            const list =
-                document.getElementById(
-                    'characters-list'
+                console.error(
+                    error
                 );
 
 
-            list.innerHTML = '';
+                showMessage(
+                    'Could not load characters: ' +
+                    error.message,
+                    'error'
+                );
 
 
-            if (!data || data.length === 0) {
-
-                list.innerHTML =
-                    '<p>You have no characters yet.</p>';
-
-                return;
+                return [];
 
             }
 
 
-            data.forEach(character => {
 
-                const card =
-                    document.createElement('div');
-
-                card.className =
-                    'character-card';
-
-
-                const title =
-                    document.createElement('h3');
-
-                title.textContent =
-                    character.full_name;
-
-
-                card.appendChild(title);
-
-
-                const details =
-                    document.createElement('p');
-
-                details.textContent =
-                    character.novice_path
-                        ? 'Novice Path'
-                        : `${character.background || ''} • ${character.province || ''}`;
-
-
-                card.appendChild(details);
-
-
-                list.appendChild(card);
-
-            });
+            return data || [];
 
         }
 
 
-        // =================================
-        // SHOW LOGGED IN
-        // =================================
+        // DECIDE WHERE USER GOES
 
-        function showLoggedInUser(user) {
-
-            authSection
-                .classList
-                .add('hidden');
+        async function routeUser(
+            user
+        ) {
 
 
-            appSection
-                .classList
-                .remove('hidden');
+            const characters =
+                await loadCharacters();
 
 
-            document.getElementById(
-                'user-email'
-            ).textContent =
-                'Logged in as: ' + user.email;
 
+            if (
+                characters.length === 0
+            ) {
 
-            loadCharacters();
+                showScholarPage();
+
+            } else {
+
+                showCharacterHome(
+                    characters[0]
+                );
+
+            }
 
         }
 
 
-        // =================================
-        // SHOW LOGGED OUT
-        // =================================
+        // RESET SCHOLAR FORM
 
-        function showLoggedOut() {
+        function resetScholarForm() {
 
-            authSection
+            document
+                .getElementById(
+                    'character-form'
+                )
+                .reset();
+
+
+            advancedInfo
                 .classList
                 .remove('hidden');
 
 
-            appSection
+            earthlingSection
                 .classList
                 .add('hidden');
 
         }
 
-
-        // =================================
+        
         // CHECK EXISTING SESSION
-        // =================================
 
         const {
             data: {
                 user
             }
         } =
-            await supabase.auth.getUser();
+            await supabase.auth
+                .getUser();
+
 
 
         if (user) {
 
-            showLoggedInUser(user);
+            await routeUser(
+                user
+            );
 
         } else {
 
-            showLoggedOut();
+            showAuthPage();
 
         }
 
