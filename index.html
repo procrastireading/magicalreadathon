@@ -1,144 +1,1048 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Reading Challenge</title>
+
+    <title>Magical Readathon</title>
+
+    <style>
+
+        body {
+            font-family: Georgia, serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-option {
+            margin-top: 10px;
+        }
+
+        .checkbox-option label {
+            display: inline;
+            margin-left: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .character-card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .character-card h3 {
+            margin-top: 0;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-    <h1>Welcome to Orillium</h1>
+    <!-- ========================= -->
+    <!-- LOGIN / SIGNUP             -->
+    <!-- ========================= -->
 
-    <h2>Enroll</h2>
+    <div id="auth-section">
 
-    <input
-        type="email"
-        id="signup-email"
-        placeholder="Email"
-    >
+        <h1>Welcome to Orillium</h1>
 
-    <input
-        type="password"
-        id="signup-password"
-        placeholder="Password"
-    >
+        <h2>Enroll</h2>
 
-    <button id="signup-button">Create account</button>
+        <input
+            type="email"
+            id="signup-email"
+            placeholder="Email"
+        >
 
-    <h2>Log in</h2>
+        <input
+            type="password"
+            id="signup-password"
+            placeholder="Password"
+        >
 
-    <input
-        type="email"
-        id="login-email"
-        placeholder="Email"
-    >
+        <button id="signup-button">
+            Create account
+        </button>
 
-    <input
-        type="password"
-        id="login-password"
-        placeholder="Password"
-    >
 
-    <button id="login-button">Log in</button>
+        <h2>Log in</h2>
+
+        <input
+            type="email"
+            id="login-email"
+            placeholder="Email"
+        >
+
+        <input
+            type="password"
+            id="login-password"
+            placeholder="Password"
+        >
+
+        <button id="login-button">
+            Log in
+        </button>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- LOGGED IN AREA              -->
+    <!-- ========================= -->
+
+    <div id="app-section" class="hidden">
+
+        <h1>Magical Readathon</h1>
+
+        <p id="user-email"></p>
+
+        <button id="logout-button">
+            Log out
+        </button>
+
+
+        <!-- ========================= -->
+        <!-- SCHOLAR'S KEY               -->
+        <!-- ========================= -->
+
+        <div class="section">
+
+            <h2>Scholar's Key</h2>
+
+            <form id="character-form">
+
+                <!-- Full name -->
+
+                <label for="full-name">
+                    Full name *
+                </label>
+
+                <input
+                    type="text"
+                    id="full-name"
+                    required
+                >
+
+
+                <!-- Age -->
+
+                <label for="age">
+                    Age
+                </label>
+
+                <input
+                    type="number"
+                    id="age"
+                    min="0"
+                >
+
+
+                <!-- Gender -->
+
+                <label for="gender">
+                    Gender
+                </label>
+
+                <select id="gender">
+
+                    <option value="">
+                        -- Select --
+                    </option>
+
+                    <option value="male">
+                        Male
+                    </option>
+
+                    <option value="female">
+                        Female
+                    </option>
+
+                    <option value="non binary">
+                        Non binary
+                    </option>
+
+                    <option value="other/prefer not to say">
+                        Other / Prefer not to say
+                    </option>
+
+                </select>
+
+
+                <!-- Image -->
+
+                <label for="character-image">
+                    Character image
+                </label>
+
+                <input
+                    type="file"
+                    id="character-image"
+                    accept="image/*"
+                >
+
+
+                <!-- Lunar phase -->
+
+                <label for="lunar-phase">
+                    Lunar phase at birth
+                </label>
+
+                <select id="lunar-phase">
+
+                    <option value="">
+                        -- Select --
+                    </option>
+
+                    <option value="unnoted">
+                        Unnoted
+                    </option>
+
+                    <option value="eclipse">
+                        Eclipse
+                    </option>
+
+                    <option value="blood moon">
+                        Blood Moon
+                    </option>
+
+                    <option value="alignment">
+                        Alignment
+                    </option>
+
+                </select>
+
+
+                <!-- Novice Path -->
+
+                <div class="checkbox-option">
+
+                    <input
+                        type="checkbox"
+                        id="novice-path"
+                    >
+
+                    <label for="novice-path">
+                        Do you want to walk the Novice Path?
+                    </label>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- NON-NOVICE INFORMATION      -->
+                <!-- ========================= -->
+
+                <div id="advanced-character-info">
+
+                    <h3>Scholar Information</h3>
+
+
+                    <!-- Background -->
+
+                    <label for="background">
+                        Background *
+                    </label>
+
+                    <select id="background">
+
+                        <option value="">
+                            -- Select --
+                        </option>
+
+                        <option value="Urban">
+                            Urban
+                        </option>
+
+                        <option value="Wilding">
+                            Wilding
+                        </option>
+
+                    </select>
+
+
+                    <!-- Province -->
+
+                    <label for="province">
+                        Province *
+                    </label>
+
+                    <select id="province">
+
+                        <option value="">
+                            -- Select --
+                        </option>
+
+                        <option value="Daerune">
+                            Daerune
+                        </option>
+
+                        <option value="Darkmeadow">
+                            Darkmeadow
+                        </option>
+
+                        <option value="Irtheria">
+                            Irtheria
+                        </option>
+
+                        <option value="Kerador">
+                            Kerador
+                        </option>
+
+                    </select>
+
+
+                    <!-- Guild -->
+
+                    <label for="guild">
+                        Guild *
+                    </label>
+
+                    <select id="guild">
+
+                        <option value="">
+                            -- Select --
+                        </option>
+
+                        <option value="The House of the Arcane">
+                            The House of the Arcane
+                        </option>
+
+                        <option value="The Order of the Crescent">
+                            The Order of the Crescent
+                        </option>
+
+                        <option value="The Mind Walkers">
+                            The Mind Walkers
+                        </option>
+
+                        <option value="The Archivists">
+                            The Archivists
+                        </option>
+
+                    </select>
+
+
+                    <!-- Calling -->
+
+                    <label>
+                        Calling *
+                    </label>
+
+                    <div class="checkbox-option">
+
+                        <input
+                            type="checkbox"
+                            name="calling"
+                            value="option a"
+                            id="calling-a"
+                        >
+
+                        <label for="calling-a">
+                            Option A
+                        </label>
+
+                    </div>
+
+
+                    <div class="checkbox-option">
+
+                        <input
+                            type="checkbox"
+                            name="calling"
+                            value="option b"
+                            id="calling-b"
+                        >
+
+                        <label for="calling-b">
+                            Option B
+                        </label>
+
+                    </div>
+
+
+                    <div class="checkbox-option">
+
+                        <input
+                            type="checkbox"
+                            name="calling"
+                            value="option c"
+                            id="calling-c"
+                        >
+
+                        <label for="calling-c">
+                            Option C
+                        </label>
+
+                    </div>
+
+
+                    <!-- Heritage -->
+
+                    <label for="heritage">
+                        Heritage *
+                    </label>
+
+                    <select id="heritage">
+
+                        <option value="">
+                            -- Select --
+                        </option>
+
+                        <option value="human">
+                            Human
+                        </option>
+
+                        <option value="elf">
+                            Elf
+                        </option>
+
+                        <option value="dwarf">
+                            Dwarf
+                        </option>
+
+                        <option value="iltirian">
+                            Iltirian
+                        </option>
+
+                        <option value="skaimorn">
+                            Skaimorn
+                        </option>
+
+                        <option value="earthling">
+                            Earthling
+                        </option>
+
+                    </select>
+
+
+                    <!-- Earthling subtype -->
+
+                    <div id="earthling-subtype-section" class="hidden">
+
+                        <label for="heritage-subtype">
+                            Earthling type *
+                        </label>
+
+                        <select id="heritage-subtype">
+
+                            <option value="">
+                                -- Select --
+                            </option>
+
+                            <option value="option a">
+                                Option A
+                            </option>
+
+                            <option value="option b">
+                                Option B
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <button type="submit">
+                    Create Character
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- EXISTING CHARACTERS        -->
+        <!-- ========================= -->
+
+        <div class="section">
+
+            <h2>Your Characters</h2>
+
+            <div id="characters-list"></div>
+
+        </div>
+
+    </div>
+
 
     <p id="message"></p>
 
-    <div id="logged-in" style="display: none;">
-        <h2>You're logged in!</h2>
-        <p id="user-email"></p>
-        <button id="logout-button">Log out</button>
-    </div>
+
+    <!-- ========================= -->
+    <!-- SUPABASE                   -->
+    <!-- ========================= -->
 
     <script type="module">
 
         import { createClient } from
             'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-        // We'll put your Supabase details here next.
 
-        const SUPABASE_URL = 'https://jgmoullogygoggqrswjk.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_gP6cLHzmxDq8kDxREa0WZA_u40Zji1F';
+        const SUPABASE_URL =
+            'https://jgmoullogygoggqrswjk.supabase.co';
 
-        const supabase = createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-        const message = document.getElementById('message');
-
-        // Sign up
-        document.getElementById('signup-button').addEventListener('click', async () => {
-
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
-
-    const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-        options: {
-            emailRedirectTo: 'https://procrastireading.github.io/magicalreadathon/'
-        }
-    });
+        const SUPABASE_KEY =
+            'sb_publishable_gP6cLHzmxDq8kDxREa0WZA_u40Zji1F';
 
 
-            if (error) {
-                message.textContent = error.message;
-                return;
+        const supabase =
+            createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        const message =
+            document.getElementById('message');
+
+
+        const authSection =
+            document.getElementById('auth-section');
+
+
+        const appSection =
+            document.getElementById('app-section');
+
+
+        const novicePath =
+            document.getElementById('novice-path');
+
+
+        const advancedInfo =
+            document.getElementById('advanced-character-info');
+
+
+        const heritage =
+            document.getElementById('heritage');
+
+
+        const earthlingSection =
+            document.getElementById('earthling-subtype-section');
+
+
+        // =================================
+        // NOVICE PATH TOGGLE
+        // =================================
+
+        novicePath.addEventListener('change', () => {
+
+            if (novicePath.checked) {
+
+                advancedInfo.classList.add('hidden');
+
+            } else {
+
+                advancedInfo.classList.remove('hidden');
+
             }
 
-            message.textContent =
-                'Account created! Check your email if confirmation is required.';
         });
 
 
-        // Log in
-        document.getElementById('login-button').addEventListener('click', async () => {
+        // =================================
+        // HERITAGE TOGGLE
+        // =================================
 
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
+        heritage.addEventListener('change', () => {
 
-            const { data, error } = await supabase.auth.signInWithPassword({
-                email: email,
-                password: password
+            if (heritage.value === 'earthling') {
+
+                earthlingSection.classList.remove('hidden');
+
+            } else {
+
+                earthlingSection.classList.add('hidden');
+
+                document.getElementById(
+                    'heritage-subtype'
+                ).value = '';
+
+            }
+
+        });
+
+
+        // =================================
+        // SIGN UP
+        // =================================
+
+        document
+            .getElementById('signup-button')
+            .addEventListener('click', async () => {
+
+                const email =
+                    document.getElementById(
+                        'signup-email'
+                    ).value;
+
+                const password =
+                    document.getElementById(
+                        'signup-password'
+                    ).value;
+
+
+                const { error } =
+                    await supabase.auth.signUp({
+
+                        email: email,
+
+                        password: password,
+
+                        options: {
+
+                            emailRedirectTo:
+                                'https://procrastireading.github.io/magicalreadathon/'
+
+                        }
+
+                    });
+
+
+                if (error) {
+
+                    message.textContent =
+                        error.message;
+
+                    return;
+
+                }
+
+
+                message.textContent =
+                    'Account created! Check your email if confirmation is required.';
+
             });
 
-            if (error) {
-                message.textContent = error.message;
+
+        // =================================
+        // LOG IN
+        // =================================
+
+        document
+            .getElementById('login-button')
+            .addEventListener('click', async () => {
+
+                const email =
+                    document.getElementById(
+                        'login-email'
+                    ).value;
+
+                const password =
+                    document.getElementById(
+                        'login-password'
+                    ).value;
+
+
+                const { data, error } =
+                    await supabase.auth.signInWithPassword({
+
+                        email: email,
+
+                        password: password
+
+                    });
+
+
+                if (error) {
+
+                    message.textContent =
+                        error.message;
+
+                    return;
+
+                }
+
+
+                showLoggedInUser(data.user);
+
+            });
+
+
+        // =================================
+        // LOG OUT
+        // =================================
+
+        document
+            .getElementById('logout-button')
+            .addEventListener('click', async () => {
+
+                await supabase.auth.signOut();
+
+                showLoggedOut();
+
+            });
+
+
+        // =================================
+        // CREATE CHARACTER
+        // =================================
+
+        document
+            .getElementById('character-form')
+            .addEventListener('submit', async (event) => {
+
+                event.preventDefault();
+
+
+                const {
+                    data: {
+                        user
+                    }
+                } =
+                    await supabase.auth.getUser();
+
+
+                if (!user) {
+
+                    message.textContent =
+                        'You must be logged in.';
+
+                    return;
+
+                }
+
+
+                const isNovice =
+                    novicePath.checked;
+
+
+                const selectedCallings =
+                    Array.from(
+                        document.querySelectorAll(
+                            'input[name="calling"]:checked'
+                        )
+                    ).map(
+                        checkbox => checkbox.value
+                    );
+
+
+                const character = {
+
+                    user_id: user.id,
+
+                    full_name:
+                        document.getElementById(
+                            'full-name'
+                        ).value,
+
+                    age:
+                        document.getElementById(
+                            'age'
+                        ).value
+                            ? Number(
+                                document.getElementById(
+                                    'age'
+                                ).value
+                            )
+                            : null,
+
+                    gender:
+                        document.getElementById(
+                            'gender'
+                        ).value || null,
+
+                    image_url:
+                        null,
+
+                    lunar_phase:
+                        document.getElementById(
+                            'lunar-phase'
+                        ).value || null,
+
+                    novice_path:
+                        isNovice,
+
+                    background:
+                        isNovice
+                            ? null
+                            : document.getElementById(
+                                'background'
+                            ).value,
+
+                    province:
+                        isNovice
+                            ? null
+                            : document.getElementById(
+                                'province'
+                            ).value,
+
+                    guild:
+                        isNovice
+                            ? null
+                            : document.getElementById(
+                                'guild'
+                            ).value,
+
+                    calling:
+                        isNovice
+                            ? null
+                            : selectedCallings.join(', '),
+
+                    heritage:
+                        isNovice
+                            ? null
+                            : document.getElementById(
+                                'heritage'
+                            ).value,
+
+                    heritage_subtype:
+                        isNovice ||
+                        heritage.value !== 'earthling'
+                            ? null
+                            : document.getElementById(
+                                'heritage-subtype'
+                            ).value
+
+                };
+
+
+                const { error } =
+                    await supabase
+                        .from('characters')
+                        .insert(character);
+
+
+                if (error) {
+
+                    message.textContent =
+                        error.message;
+
+                    console.error(error);
+
+                    return;
+
+                }
+
+
+                message.textContent =
+                    'Character created!';
+
+
+                document
+                    .getElementById('character-form')
+                    .reset();
+
+
+                earthlingSection
+                    .classList.add('hidden');
+
+
+                await loadCharacters();
+
+            });
+
+
+        // =================================
+        // LOAD CHARACTERS
+        // =================================
+
+        async function loadCharacters() {
+
+            const {
+                data: {
+                    user
+                }
+            } =
+                await supabase.auth.getUser();
+
+
+            if (!user) {
                 return;
             }
 
-            showLoggedInUser(data.user);
-        });
+
+            const { data, error } =
+                await supabase
+                    .from('characters')
+                    .select('*')
+                    .order(
+                        'created_at',
+                        {
+                            ascending: true
+                        }
+                    );
 
 
-        // Log out
-        document.getElementById('logout-button').addEventListener('click', async () => {
+            if (error) {
 
-            await supabase.auth.signOut();
+                message.textContent =
+                    error.message;
 
-            document.getElementById('logged-in').style.display = 'none';
-            message.textContent = 'You have logged out.';
-        });
+                console.error(error);
+
+                return;
+
+            }
 
 
-        // Check whether someone is already logged in
-        const { data } = await supabase.auth.getUser();
+            const list =
+                document.getElementById(
+                    'characters-list'
+                );
 
-        if (data.user) {
-            showLoggedInUser(data.user);
+
+            list.innerHTML = '';
+
+
+            if (!data || data.length === 0) {
+
+                list.innerHTML =
+                    '<p>You have no characters yet.</p>';
+
+                return;
+
+            }
+
+
+            data.forEach(character => {
+
+                const card =
+                    document.createElement('div');
+
+                card.className =
+                    'character-card';
+
+
+                const title =
+                    document.createElement('h3');
+
+                title.textContent =
+                    character.full_name;
+
+
+                card.appendChild(title);
+
+
+                const details =
+                    document.createElement('p');
+
+                details.textContent =
+                    character.novice_path
+                        ? 'Novice Path'
+                        : `${character.background || ''} • ${character.province || ''}`;
+
+
+                card.appendChild(details);
+
+
+                list.appendChild(card);
+
+            });
+
         }
 
+
+        // =================================
+        // SHOW LOGGED IN
+        // =================================
 
         function showLoggedInUser(user) {
 
-            document.getElementById('logged-in').style.display = 'block';
+            authSection
+                .classList
+                .add('hidden');
 
-            document.getElementById('user-email').textContent =
+
+            appSection
+                .classList
+                .remove('hidden');
+
+
+            document.getElementById(
+                'user-email'
+            ).textContent =
                 'Logged in as: ' + user.email;
+
+
+            loadCharacters();
+
+        }
+
+
+        // =================================
+        // SHOW LOGGED OUT
+        // =================================
+
+        function showLoggedOut() {
+
+            authSection
+                .classList
+                .remove('hidden');
+
+
+            appSection
+                .classList
+                .add('hidden');
+
+        }
+
+
+        // =================================
+        // CHECK EXISTING SESSION
+        // =================================
+
+        const {
+            data: {
+                user
+            }
+        } =
+            await supabase.auth.getUser();
+
+
+        if (user) {
+
+            showLoggedInUser(user);
+
+        } else {
+
+            showLoggedOut();
+
         }
 
     </script>
 
 </body>
+
 </html>
