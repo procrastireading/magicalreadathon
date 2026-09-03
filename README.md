@@ -1,1 +1,1 @@
-# magicalreadathon
+# Magical Readathon
