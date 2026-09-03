@@ -73,10 +73,14 @@
             const email = document.getElementById('signup-email').value;
             const password = document.getElementById('signup-password').value;
 
-            const { data, error } = await supabase.auth.signUp({
-                email: email,
-                password: password
-            });
+    const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+            emailRedirectTo: 'https://YOUR-GITHUB-USERNAME.github.io'
+        }
+    });
+
 
             if (error) {
                 message.textContent = error.message;
